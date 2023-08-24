@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Pet Adoption{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 class="display-1">Find A Pet</h1>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <th>Name</th>
+                <th>Photo</th>
+                <th>Availability</th>
+            </thead>
+            <tbody>
+                {% for pet in pets %}
+                <tr>
+                    <td>{{pet.name}} <a href="/{{pet.id}}"> details </a></td>  
+                    <td>
+                        {% if pet.photo_url %}
+                            <img src="{{pet.photo_url}}" alt="{{pet.name}}" style="max-width: 75px;">
+                        {% else %}
+                            N/A 
+                        {% endif %}    
+                    </td> 
+                    <td>
+                        {% if pet.available == True %}
+                            AVAILABLE
+                        {% else %}
+                            Not currently up for adoption 
+                        {% endif %}    
+                   </td> 
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/add" class="btn btn-success">New Pet Form</a>
+
+    </div>
+
+{% endblock %}
