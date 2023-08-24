@@ -60,7 +60,9 @@ def pet_edit_page(id):
         pet.available = form.available.data
 
         db.session.commit()
-        return redirect(f'/<int:id>')
+        return redirect(f'/{pet.id}')
 
-    else:
+
+    else:      
+        errors = form.errors  
         return render_template('edit_pet_form.html', form=form, pet=pet)

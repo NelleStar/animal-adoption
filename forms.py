@@ -10,9 +10,9 @@ class NewPetForm(FlaskForm):
     species = StringField('Species',
                           validators=[InputRequired(message='Species cannot be blank')])
     photo_url = StringField('Photo URL',
-                            validators=[URL()])
+                            validators=[Optional(), URL()])
     age = IntegerField('Pet Age In Years',
-                       validators=[NumberRange(min=0, max=30)])
+                       validators=[Optional(), NumberRange(min=0, max=30)])
     notes = StringField('Notes')
     available = BooleanField("Is this pet ready for adoption?")
 
